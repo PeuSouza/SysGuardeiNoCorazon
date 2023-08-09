@@ -1,0 +1,32 @@
+-- Conectando ao MySQL com o usuário root e senha root
+mysql -u root -proot
+
+-- Criação do banco de dados SysGuardeiNoCorazon
+CREATE DATABASE SysGuardeiNoCorazon;
+
+-- Usando o banco de dados recém-criado
+USE SysGuardeiNoCorazon;
+
+-- Criação da tabela Desafetos
+CREATE TABLE Desafetos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    Apelido VARCHAR(50),
+    Sexo VARCHAR(10),
+    DeOndeConheco VARCHAR(100)
+);
+
+-- Criação da tabela Desavencas
+CREATE TABLE Desavencas (
+    codigo INT PRIMARY KEY AUTO_INCREMENT,
+    data DATE,
+    Hora TIMESTAMP,
+    Descricao TEXT,
+    Motivacao TEXT,
+    Local VARCHAR(100),
+    desafeto_id INT,
+    FOREIGN KEY (desafeto_id) REFERENCES Desafetos(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Encerrando a conexão com o MySQL
+EXIT
