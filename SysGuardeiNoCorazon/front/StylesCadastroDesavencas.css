@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: cadetblue;
+}
+
+/* Center content */
+center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.btn-link-custom {
+    color: #0a0a0a;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.btn-link-custom:hover,
+.btn-link-custom:focus {
+    color: #d7f81b;
+    text-decoration: underline;
+    background-color: transparent;
+}
+
+/* Style for the form inputs */
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+    background-color: #0026ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style for the home link */
+a {
+    margin-top: 20px;
+    display: inline-block;
+    color: #ff00b3;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style for the header */
+h1 {
+    margin-bottom: 20px;
+}

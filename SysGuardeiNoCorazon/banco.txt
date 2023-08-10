@@ -19,8 +19,8 @@ CREATE TABLE Desafetos (
 -- Criação da tabela Desavencas
 CREATE TABLE Desavencas (
     codigo INT PRIMARY KEY AUTO_INCREMENT,
-    data DATE,
-    Hora TIMESTAMP,
+    data VARCHAR(10),
+    hora VARCHAR(19,
     Descricao TEXT,
     Motivacao TEXT,
     Local VARCHAR(100),

@@ -42,7 +42,7 @@ DesafetosRepositorio(){
 @Override
    public void atualizar(Desafetos df) {
 
-	String sql = "update Desafetos set Nome=?, Apelido=?, Sexo=?, DeOndeConheco=? where Id=?";
+	String sql = "update Desafetos set nome=?, apelido=?, sexo=?, deOndeConheco=? where id=?";
 
 	try {
 
@@ -156,7 +156,7 @@ DesafetosRepositorio(){
 
 public List<Desavencas> filtroDeDesavencasporDesafeto(Integer id){
 	
-	String sql= "select * from desavencas where Desafetos_id = ?";
+	String sql= "select * from desavencas where desafeto_id = ?";
 	List<Desavencas> Desavencas= new ArrayList<>();
     Desavencas Desavenca = null;
 	try {
@@ -168,8 +168,8 @@ public List<Desavencas> filtroDeDesavencasporDesafeto(Integer id){
 		while(result.next()){
 			Desavenca = new Desavencas();
 			Desavenca.setCodigo(result.getInt("Codigo"));
-			Desavenca.setData(result.getLong("Data"));
-			Desavenca.setHora(result.getTimestamp("Hora"));
+			Desavenca.setData(result.getString("data"));
+			Desavenca.setHora(result.getString("Hora"));
 			Desavenca.setDescricao(result.getString("Descricao"));
 			Desavenca.setMotivacao(result.getString("motivacao"));
 			Desavenca.setLocal(result.getString("Local"));

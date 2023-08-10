@@ -1,6 +1,6 @@
 package com.depaula.ifpe.model.repositorios;
 
-import java.sql.Date;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +18,16 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 }
  @Override
 	public void criar(Desavencas dv) throws SQLException {
-		String sql = "insert into Desavencas(Data,Hora,Descricao,Motivacao,Local, Desafeto) values(?,?,?,?,?,?)";
+		String sql = "insert into Desavencas(data,hora,descricao,motivacao,local,desafeto_id) values(?,?,?,?,?,?)";
 
 		PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
-		pstm.setDate (1, new Date (dv.getData()));
-		pstm.setTimestamp(2, dv.getHora());
+		pstm.setString (1,dv.getData());
+		pstm.setString(2, dv.getHora());
 		pstm.setString(3, dv.getDescricao());
 		pstm.setString(4, dv.getMotivacao());
 		pstm.setString(5, dv.getLocal());
-		pstm.setObject(6, dv.getDesafeto());
+		pstm.setInt(6, dv.getDesafeto().getId());
 		 
 
 		pstm.execute();
@@ -41,8 +41,8 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
       try {
 	      PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
-	      pstm.setDate (1, new Date (dv.getData()));
-	       pstm.setTimestamp(2, dv.getHora());
+	       pstm.setString (1, dv.getData());
+	       pstm.setString(2, dv.getHora());
 	       pstm.setString(3, dv.getDescricao());
 	       pstm.setString(4, dv.getMotivacao());
 	       pstm.setString(5, dv.getLocal());
@@ -58,7 +58,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
   }
  @Override
 	public Desavencas ler (Integer codigo) {
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.Desafetos_id = df.codigo) where codigo=?";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.codigo) where codigo=?";
 		
 		try {
 
@@ -73,8 +73,8 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 			if (result.next()) {
 				nDesavencas = new Desavencas();
 				nDesavencas.setCodigo(result.getInt("codigo"));
-				nDesavencas.setData(result.getLong("data"));
-				nDesavencas.setHora(result.getTimestamp("hora"));
+				nDesavencas.setData(result.getString("data"));
+				nDesavencas.setHora(result.getString("hora"));
 				nDesavencas.setDescricao(result.getString("descricao"));
 				nDesavencas.setMotivacao(result.getString("motivacao"));
 				nDesavencas.setLocal(result.getString("local"));
@@ -101,7 +101,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 
  @Override
 	public List<Desavencas> lerTodos(){
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.Desafetos_id = df.codigo)";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.codigo)";
 		List<Desavencas> lDesavencas = new ArrayList<>();
 		
 		try {
@@ -112,8 +112,8 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 			
 			while (result.next()){
 				nDesavencas.setCodigo(result.getInt("codigo"));
-				nDesavencas.setData(result.getLong("Data"));
-				nDesavencas.setHora(result.getTimestamp("Hora"));
+				nDesavencas.setData(result.getString("Data"));
+				nDesavencas.setHora(result.getString("Hora"));
 				nDesavencas.setDescricao(result.getString("Descricao"));
 				nDesavencas.setMotivacao(result.getString("Motivacao"));
 				nDesavencas.setLocal(result.getString("Local"));
@@ -137,19 +137,6 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 
 			return lDesavencas;
 	    }
-//
-// //filtro desavenças por desafeto
-// @Override
-// public List<Desavencas> lerDesavencasporDesafeto(int id){
-//	 String sql = "select * from Desavencas where Desafetos_id=?"; 
-//			 }
-//	PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
-//	
-// 
-//	
-//	//parei aqui 
-//	
-	
 	
 	
  @Override

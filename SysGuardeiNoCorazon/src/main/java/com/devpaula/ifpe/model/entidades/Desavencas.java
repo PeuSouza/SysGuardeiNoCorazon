@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 public class Desavencas {
     int codigo;
-	long data;
-	Timestamp Hora;
+	String data;
+	String Hora;
 	String Descricao;
 	String Motivacao;
 	String Local;
@@ -19,21 +19,19 @@ public class Desavencas {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public long getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(long data) {
-		this.data = data;
+	public String setData(String data) {
+		return data;
 	}
 	
-	
-	public Timestamp getHora() {
+	public String getHora() {
 		return Hora;
 	}
-	public void setHora(Timestamp hora) {
+	public void setHora(String hora) {
 		Hora = hora;
 	}
-	
 	public String getDescricao() {
 		return Descricao;
 	}

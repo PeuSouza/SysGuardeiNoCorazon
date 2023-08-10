@@ -1,0 +1,26 @@
+.btn-link-custom {
+    color: #011429;
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Override Bootstrap's default styling for button links */
+.btn-link-custom:hover,
+.btn-link-custom:focus {
+    color: #9e2905;
+    text-decoration: underline;
+    font-size:larger;
+    background-color: transparent;
+}
+head{
+    text-decoration-color:red;
+}
+body{
+    background-color: rgb(161, 166, 167);
+    background-image: url('https://cdn.awsli.com.br/2500x2500/1594/1594408/produto/1482065559e35ca2209.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+}

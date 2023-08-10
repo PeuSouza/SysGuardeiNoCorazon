@@ -25,8 +25,8 @@ public class Fachada {
 		this.Desafetosrep.criar(Desafeto);
 	}
 	
-	public void criar (Desavencas Desavencas) throws SQLException {
-		this.Desavencasrep.criar(Desavencas);
+	public void criar (Desavencas Desavenca) throws SQLException {
+		this.Desavencasrep.criar(Desavenca);
 	}
 	
 	//atualizar
