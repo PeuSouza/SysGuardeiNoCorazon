@@ -9,13 +9,13 @@ var myModal = new bootstrap.Modal(document.getElementById('modalAltera'))
         const divMain = document.getElementById("main")
         
         let s = "<table class='table'>"
-            +"<tr><th>codigo</th><th>data</th><th>hora</th><th>Descricao</th><th>Motivacao</th><th>Local</th><th>Desafeto_id</th></tr>"
+            +"<tr><th>codigo</th><th>data</th><th>hora</th><th>Descricao</th><th>Motivacao</th><th>Local</th><th>desafeto_id</th></tr>"
 
             json.forEach(element => {
                 
-                s += '<tr><td>${element.codigo}</td><td>${element.data}</td><td>${element.hora}</td><td>${element.descricao}</td><td>${element.motivacao}</td><td>${element.local}</td><td>${element.desafeto_id}</td>'
+                s += `<tr><td>${element.codigo}</td><td>${element.data}</td><td>${element.hora}</td><td>${element.descricao}</td><td>${element.motivacao}</td><td>${element.lugar}</td><td>${element.desafeto_id}</td>`
                 +`<td><button class="btn btn-primary" onclick="abrirModalAltera(${element.id})" >alterar</button>`
-                +`<button class="btn btn-primary" onclick="detalharRegistros(${element.id})">detalhar</button>`
+                
                 +`<button class="btn btn-secondary" onclick="deletar(${element.id})">deletar</button> </td></tr>`
 
             })

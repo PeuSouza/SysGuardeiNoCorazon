@@ -37,7 +37,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
  @Override
 	public void atualizar(Desavencas dv) {
 
-		String sql = "update Desavencas set data=?, hora=?, descricao=?, motivacao=?, local=? where codigo=?";
+		String sql = "update Desavencas set data=?, hora=?, descricao=?, motivacao=?, local=?, desafeto=? where codigo=?";
       try {
 	      PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 
@@ -58,7 +58,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
   }
  @Override
 	public Desavencas ler (Integer codigo) {
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = dv.codigo) where codigo=?";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.id) where id=?";
 		
 		try {
 
@@ -68,16 +68,16 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 
 			ResultSet result = pstm.executeQuery();
 
-			Desavencas nDesavencas = null;
+			Desavencas Desavenca = null;
 
 			if (result.next()) {
-				nDesavencas = new Desavencas();
-				nDesavencas.setCodigo(result.getInt("codigo"));
-				nDesavencas.setData(result.getString("data"));
-				nDesavencas.setHora(result.getString("hora"));
-				nDesavencas.setDescricao(result.getString("descricao"));
-				nDesavencas.setMotivacao(result.getString("motivacao"));
-				nDesavencas.setLocal(result.getString("local"));
+				Desavenca = new Desavencas();
+				Desavenca.setCodigo(result.getInt("codigo"));
+				Desavenca.setData(result.getString("data"));
+				Desavenca.setHora(result.getString("hora"));
+				Desavenca.setDescricao(result.getString("descricao"));
+				Desavenca.setMotivacao(result.getString("motivacao"));
+				Desavenca.setLocal(result.getString("local"));
 				
                 Desafetos Desafeto = new Desafetos();
                 Desafeto.setId(result.getInt("id"));
@@ -86,11 +86,11 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
                 Desafeto.setSexo(result.getString("sexo"));
                 Desafeto.setDeOndeConheco(result.getString("deOndeConheco"));
                 
-                nDesavencas.setDesafeto(Desafeto);
+                Desavenca.setDesafeto(Desafeto);
 				
 			}
 
-			return nDesavencas;
+			return Desavenca;
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -101,22 +101,23 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 
  @Override
 	public List<Desavencas> lerTodos(){
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = dv.codigo)";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.id)";
 		List<Desavencas> lDesavencas = new ArrayList<>();
 		
 		try {
 			PreparedStatement pstm = ConnectionManager.getCurrentConnection().prepareStatement(sql);
 			ResultSet result = pstm.executeQuery();
 			
-			Desavencas nDesavencas = null;
+			Desavencas Desavenca = null;
 			
 			while (result.next()){
-				nDesavencas.setCodigo(result.getInt("codigo"));
-				nDesavencas.setData(result.getString("Data"));
-				nDesavencas.setHora(result.getString("Hora"));
-				nDesavencas.setDescricao(result.getString("Descricao"));
-				nDesavencas.setMotivacao(result.getString("Motivacao"));
-				nDesavencas.setLocal(result.getString("Local"));
+				Desavenca=new Desavencas();
+				Desavenca.setCodigo(result.getInt("codigo"));
+				Desavenca.setData(result.getString("Data"));
+				Desavenca.setHora(result.getString("Hora"));
+				Desavenca.setDescricao(result.getString("Descricao"));
+				Desavenca.setMotivacao(result.getString("Motivacao"));
+				Desavenca.setLocal(result.getString("Local"));
 				
 				Desafetos Desafeto = new Desafetos();
                 Desafeto.setId(result.getInt("id"));
@@ -124,10 +125,10 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
                 Desafeto.setApelido(result.getString("apelido"));
                 Desafeto.setSexo(result.getString("sexo"));
                 Desafeto.setDeOndeConheco(result.getString("deOndeConheco"));
-                nDesavencas.setDesafeto(Desafeto);
+                Desavenca.setDesafeto(Desafeto);
                 
                 
-			 lDesavencas.add(nDesavencas);
+			 lDesavencas.add(Desavenca);
 			 
 			} 
 			} catch (SQLException e) {
