@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Desafetos cadastrados</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="StylesDesafetos.css">
+</head>
+<body>
+    <center>
+    <h1>Meus Desafetos</h1>
+    <h2><a href= "index.html">Home</a></h2>
+    <div id="main"></div>
+
+<div class="modal fade" id="modalAltera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alterar um Desafeto</h5>
+         
+        </div>
+        <div class="modal-body">
+          <form id="formAltera" formSubmitter="PUT">
+            <input type="hidden" name="id" id="txtid"/>
+            Nome: <input type="text" name="nome" id="txtNome"  class="form-control"/><br/>
+            Apelido: <input type="text" name="apelido" id="txtApelido"  class="form-control"/></br>
+            Sexo: <input type="text" name="Sexo" id="txtsexo"/></br>
+            DeOndeConheco: <input type="text" name="DeOndeConheco" id="txtdeOndeConheco"/> </br>
+
+            <button type="submit" class="btn btn-primary">alterar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="Desafeto.js"></script>
+<script src="formSubmiter.js"></script>
+    </center>
+</body>
+</html>

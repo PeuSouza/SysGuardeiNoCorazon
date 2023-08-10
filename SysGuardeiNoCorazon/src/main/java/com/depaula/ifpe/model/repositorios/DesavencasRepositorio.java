@@ -58,7 +58,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
   }
  @Override
 	public Desavencas ler (Integer codigo) {
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.codigo) where codigo=?";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = dv.codigo) where codigo=?";
 		
 		try {
 
@@ -101,7 +101,7 @@ public class DesavencasRepositorio implements GenericRepository<Desavencas, Inte
 
  @Override
 	public List<Desavencas> lerTodos(){
-		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = df.codigo)";
+		String sql = "select * from Desavencas as dv join Desafetos as df on (dv.desafeto_id = dv.codigo)";
 		List<Desavencas> lDesavencas = new ArrayList<>();
 		
 		try {

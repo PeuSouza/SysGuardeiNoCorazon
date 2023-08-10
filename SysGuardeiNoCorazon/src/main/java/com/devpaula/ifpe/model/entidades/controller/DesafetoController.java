@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,11 @@ if(Desafeto==null) {
 		 Desafeto= Fachada.getCurrentInstance().lerTodosDesafetos();
 
     return new ResponseEntity<List<Desafetos>>(Desafeto,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/Desafeto/{id}")
+	public void delete(@PathVariable("id") int id) {
+		Fachada.getCurrentInstance().deletarDesafetos(id);
 	}
 	
 }

@@ -1,6 +1,5 @@
 package com.devpaula.ifpe.model.entidades;
 
-import java.sql.Timestamp;
 
 public class Desavencas {
     int codigo;
